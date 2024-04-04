@@ -1,0 +1,154 @@
+	
+<div>
+	<div class="col-md-12">
+	  
+	  
+	       
+	        <div style="position: absolute; top: 10px; right: 10px;">
+	            <label>
+	                <input type="radio" ng-model="selectedOption" value="averageRating"> Average Rating
+	            </label>
+	            <br>
+	            <label>
+	                <input type="radio" ng-model="selectedOption" value="numberOfRatings"> Number of Ratings
+	            </label>
+	            <br>
+	            
+	            <div style="position: absolute; top: 55px; right: 10px;">
+	             <button class="btn btn-info" ng-click="bookRanking(selectedOption)">Apply</button>
+	             </div>
+	        </div>
+	        
+	        
+	   <h2>Filter Books: </h2>
+	   <div style="display: flex; flex-wrap: wrap;">
+	      <md-content style="display: inline-block; margin-right: 20px;">
+	          <md-button class="btn btn-primary mb-2 btn-sm mb-1" ng-click="toggleDropdownAuthor()">Authors</md-button>
+	          <button class="btn btn-success mb-2 btn-sm mb-1" ng-click="findBookByAuthor()">Apply</button>
+	
+	      </md-content>
+	      <br>
+	  
+	      <md-content style="display: inline-block; margin-right: 20px;">
+	          <md-button class="btn btn-primary mb-2 btn-sm mb-1" ng-click="toggleDropdownGenre()">Genres</md-button>
+	          <button class="btn btn-success mb-2 btn-sm mb-1" ng-click="findBookByGenre()">Apply</button>
+	          
+	 
+	      </md-content>
+	  
+	      <md-content style="display: inline-block; margin-right: 20px;">
+	          <md-button class="btn btn-primary mb-2 btn-sm mb-1" ng-click="toggleDropdownRating()">Rating</md-button>
+	          <button class="btn btn-success mb-2 btn-sm mb-1" ng-click="findBookByRating()">Apply</button>
+	          <br>
+	          
+	      </md-content>
+	     
+	   
+	     <md-select ng-model="vm1.selectedOptions1" multiple ng-show="dropdownVisible1">
+	     <h4>All Authors:</h4>
+	     <form id="form2" >
+	     <select width=300 style="width: 150px"
+	       size="4" multiple >
+	      <option  ng-value="option" ng-click="addOption1(option)" ng-repeat="option in vm1.options1">{{ option }}</option>
+	     </select>
+	    </form>
+	              
+	          </md-select> 
+	          
+	          <md-select ng-model="vm2.selectedOptions1" multiple ng-show="dropdownVisible2">
+	          <h4>All Genres:</h4>
+	       <form id="form2" >
+	       <select width=300 style="width: 150px"
+	         size="4" multiple >
+	        <option  ng-value="option" ng-click="addOption2(option)" ng-repeat="option in vm2.options2">{{ option }}</option>
+	       </select>
+	      </form>
+	              
+	          </md-select> 
+	          <md-select ng-model="vm3.selectedOptions3" multiple ng-show="dropdownVisible3">
+	          <h4>Ratings:</h4>
+	       <form id="form2" >
+	       <select width=300 style="width: 65px"
+	         size="4" multiple >
+	        <option  ng-value="option" ng-click="addOption3(option)" ng-repeat="option in vm3.options3">{{ option }}</option>
+	       </select>
+	      </form>
+	              
+	          </md-select> 
+	          
+	     
+	  </div>
+	
+	  <br>
+	  
+	      
+	     <div ng-show="vm1.selectedOptions1.length > 0">
+	      <ul>
+	        <li ng-repeat="selectedOption in vm1.selectedOptions1">{{ selectedOption }}</li>
+	      </ul>
+	    </div> 
+	    <br>
+	    <div ng-show="vm2.selectedOptions2.length > 0">
+	      <ul>
+	        <li ng-repeat="selectedOption in vm2.selectedOptions2">{{ selectedOption }}</li>
+	      </ul>
+	    </div>
+	    <br>
+	    <div ng-show="vm3.selectedOptions3.length > 0">
+	      <ul>
+	        <li>{{ vm3.selectedOptions3 }}</li>
+	      </ul>
+	    </div>
+	</div>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-15">
+            <h2>Added Books</h2>
+            <hr>
+            <div style="position: absolute; top: 10px; right: 10px;">
+        <button class="btn btn-info" ng-click="findAllBooks()">See all books</button>
+    </div>
+           
+        <div class="col-md-12">
+            <div class="row book-list" infinite-load="pageBooks(true)" infinite-margin="200">
+        
+              <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2 book" ng-repeat="book in books">
+                <a ng-click= "showPopup(book.id)" ng-model = "book.id"class="thumbnail">
+                  <div class="image">
+                    <img ng-src="api/commonlibrary/{{ book.id }}/cover" title="{{ book.title }}" />
+                    <span title="Read book" class="glyphicon glyphicon-ok book-read" ng-if="book.read_date"></span>
+                    
+                  </div>
+                  <div class="caption">
+                    <p class="text-secondary text-center"><strong>Title:</strong> {{ book.title }}</p>
+                    <p class="text-secondary text-center"><strong>Author:</strong> {{ book.author }}</p>
+                    <p class="text-secondary text-center"><strong>Genre:</strong> {{book.genre}}</p>
+                    <p class="text-secondary text-center"><strong>Rating:</strong> {{book.rating}}</p>
+                  
+                  </div>
+             
+                </a>
+                <div class="text-center" >
+                    <input type="number"  ng-model="rating" min="0" max="10" value="0" placeholder="0">
+                    <button class="btn btn-success mb-2 btn-sm mb-1" ng-click = "giveRating(rating,book.id)">Rate</button>
+              </div>
+              </div>
+        </div>
+        
+              <div class="col-md-12 text-center" ng-show="!loading && books.length == 0">
+                No book
+              </div>
+        
+              <div class="col-md-12 text-center" ng-show="loading">
+                <img src="img/loader.gif" />
+              </div>
+        
+            </div>
+          </div>
+    </div>
+	
+</div>
+	
+	</div>
+	

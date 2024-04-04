@@ -1,0 +1,11 @@
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/security/AnonymousPrincipal.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/rest/util/ValidationUtil.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/security/IPrincipal.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/rest/exception/ServerException.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/util/filter/RequestContextFilter.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/security/UserPrincipal.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/rest/util/JsonUtil.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/util/filter/TokenBasedSecurityFilter.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/rest/resource/GenericExceptionMapper.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/rest/exception/ForbiddenClientException.java
+/home/prashant/Desktop/SE/Project-2/jarfix/se-project-1--_22/books-web-common/src/main/java/com/sismics/rest/exception/ClientException.java

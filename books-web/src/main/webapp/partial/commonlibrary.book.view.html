@@ -1,0 +1,39 @@
+
+<div class="container py-5">
+   <div style="position: absolute;top: 10px; right: 10px; ">
+      <div style="position: absolute; top: 55px; right: 10px;">
+         <button ng-click="goBack()" class="btn btn-secondary ">Back</button>
+         </div>
+   </div>
+
+    <div class="row justify-content-center">
+     <div class="col-md-8">
+      <div class="card border-0 shadow">
+       <div class="card-body">
+         
+        <h1 class="card-title text-center mb-4"> {{data.title}}</h1>
+        <h2 class="card-subtitle text-muted text-center mb-4"> {{data.author}}</h2>
+        <p class="lead"><strong>Subtitle:</strong> {{data.subtitle}}</p>
+        <p>
+         <strong>Description:</strong> {{data.description}}
+        </p>
+        <p><strong>Published Date:</strong> {{data.publishdate}}</p>
+        <p><strong>Genre:</strong> {{data.genre}}</p>
+        <p><strong>Rating:</strong> {{data.rating}}</p>
+        <p><strong>Number of Ratings:</strong> {{data.noofrating}}</p>
+        <p><strong>ISBN-10:</strong> {{data.isbn10}}</p>
+        <p><strong>ISBN-13:</strong> {{data.isbn13}}</p>
+        <p><strong>Page Count:</strong> {{data.pagecount}}</p>
+        <p><strong>Language:</strong> <img ng-src="img/flags/{{ data.language }}.png" /></p>
+        
+       </div>
+      </div>
+     </div>
+     <div class="col-md-4 mt-3 mt-md-0 ml-md-3">
+        <img ng-src="api/commonlibrary/{{ data.id }}/cover" height = "250px" width = "170px" class="card-img-top" alt="Book Cover">
+     </div>
+    
+    </div>
+   </div>
+ 
+ 

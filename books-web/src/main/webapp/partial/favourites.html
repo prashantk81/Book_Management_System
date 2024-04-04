@@ -1,0 +1,88 @@
+<div>
+    <div class="col-sm-7">
+      <label class="col-sm-2 control-label" for="searchQueryType">Choose Type</label>
+    	<input type="radio" id="audiobook" name="audiobook" value="audiobook" ng-model="searchQueryType">
+  		<label for="audiobook">Audiobooks</label>&emsp;&emsp;
+    	<input type="radio" id="podcast" name="podcast" value="podcast" ng-model="searchQueryType">
+  		<label for="podcast">Podcasts</label>
+  	</div>
+  	<div class="col-sm-7">
+      <label class="col-sm-2 control-label" for="provider">Choose Provider</label>
+    	<input type="radio" id="spotify" name="spotify" value="spotify" ng-model="provider">
+  		<label for="spotify">Spotify</label>&emsp;&emsp;
+    	<input type="radio" id="itunes" name="itunes" value="itunes" ng-model="provider">
+  		<label for="itunes">iTunes</label>
+  	</div>
+     <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary" ng-click="fetch()" >
+          <span class="glyphicon glyphicon glyphicon-flash"></span> Fetch
+        </button>
+     </div>
+     <br/><br/>
+     <!-- <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary" ng-click="favourite()" >
+          <span class="glyphicon glyphicon glyphicon-flash"></span> Add to favourites
+        </button>
+     </div> -->
+     
+    <div ng-if="provider == 'spotify' && searchQueryType == 'podcast'">
+    	<div ng-repeat="podcast in searchData.podcasts">
+   		<div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center;">
+			<img src="{{podcast.imageUrl}}" alt="Album Art" style="width: 120px; height: 120px; object-fit: cover; margin-right: 30px;">
+		<div>
+	  	<h3 style="margin: 0; font-size: 1.5rem;">{{podcast.name}}</h3>
+	  	<!--<p style="margin: 5px 0 0; font-size: 1.2rem;"> {{track.artist}}</p>  -->
+	  	<!-- <a href="{{podcast.audio_preview_url}}" target="_blank" style="display: block; margin-top: 20px; background-color: green; color: #fff; text-decoration: none; text-align: center; padding: 10px; border-radius: 5px;">Check on Spotify</a> -->
+		<audio controls>
+			<source src="{{podcast.audio_url}}" type="audio/mpeg">
+		</audio>
+		</div>
+		</div>
+		</div>
+    </div>
+    
+    <div ng-if="provider == 'spotify' && searchQueryType == 'audiobook'">
+    	<div ng-repeat="book in searchData.audiobooks">
+   		<div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center;">
+			<img src="{{book.imageUrl}}" alt="Album Art" style="width: 120px; height: 120px; object-fit: cover; margin-right: 30px;">
+		<div>
+	  	<h3 style="margin: 0; font-size: 1.5rem; background-color: #4f819d; color: #fff; width: 30%; "><strong>{{book.name}}</strong></h3>
+	  	<h4 style="margin: 0; font-size: 1.5rem; "> <strong>Author:</strong> {{book.author}}</h4>
+	  	<h4 style="margin: 0; font-size: 1.5rem;"> <strong>Narrator:</strong> {{book.narrator}}</h4>
+	  	<div ng-bind-html-unsafe="book.description | to_trusted" style="background: grey; height: 30px; color: black"></div>
+		</div>
+		</div>
+		</div>
+    </div>
+    <div ng-if="provider == 'itunes' && searchQueryType == 'podcast'">
+    	<div ng-repeat="podcast in searchData.podcasts">
+   		<div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center;">
+			<img src="{{podcast.imageUrl}}" alt="Album Art" style="width: 120px; height: 120px; object-fit: cover; margin-right: 30px;">
+		<div>
+	  	<h3 style="margin: 0; font-size: 1.5rem;">{{podcast.name}}</h3>
+	  	<!--<p style="margin: 5px 0 0; font-size: 1.2rem;"> {{track.artist}}</p>  -->
+	  	<!-- <a href="{{podcast.audio_preview_url}}" target="_blank" style="display: block; margin-top: 20px; background-color: green; color: #fff; text-decoration: none; text-align: center; padding: 10px; border-radius: 5px;">Check on Spotify</a> -->
+		<audio controls>
+			<source src="{{podcast.audio_url}}" type="audio/mpeg">
+		</audio>
+		</div>
+		</div>
+		</div>
+    </div>
+    
+    <div ng-if="provider == 'itunes' && searchQueryType == 'audiobook'">
+    	<div ng-repeat="book in searchData.audiobooks">
+   		<div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center;">
+			<img src="{{book.imageUrl}}" alt="Album Art" style="width: 120px; height: 120px; object-fit: cover; margin-right: 30px;">
+		<div>
+	  	<h3 style="margin: 0; font-size: 1.5rem; background-color: #4f819d; color: #fff; width: 30%; "><strong>{{book.name}}</strong></h3>
+	  	<h4 style="margin: 0; font-size: 1.5rem; "> <strong>Author:</strong> {{book.author}}</h4>
+	  	<h5 style="margin: 0; font-size: 1.5rem;"> {{book.description}}</h5>
+	  	<audio controls>
+			<source src="{{book.previewUrl}}" type="audio/mpeg">
+		</audio>
+		</div>
+		</div>
+		</div>
+    </div>
+</div>
